@@ -1,0 +1,14 @@
+div id="root"></div>
+<script>
+    let data = fetch("http://127.0.0.1:8000//api/myapp/patients/" , { method :  "GET" , headers : {'Content-Type' : 'application/json'} }).then(response => response.json())
+    .then(r => r["results"].map(
+        (elm) => 
+        {
+            console.log(elm);
+            const root = document.getElementById("root")
+            var newDiv = document.createElement("div");
+            newDiv.innerHTML = elm.data.nom
+            root.appendChild(newDiv);
+        }))
+
+</script>
